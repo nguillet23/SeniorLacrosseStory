@@ -1,6 +1,6 @@
 # XR Lacrosse Goalie Training
 
-Project website for the **Extended Reality Lacrosse Goalie Training** senior design project at Villanova University. The project combines a Magic Leap headset, Unity, and Vive Trackers to create an immersive goalie training system.
+Project website for the **Extended Reality Lacrosse Goalie Training** senior design project at Villanova University. The project combines a Magic Leap headset, Unity, and the Magic Leap controller to create an immersive goalie training system.
 
 - **Repository:** https://github.com/nguillet23/SeniorLacrosseStory
 - **Planned site URL:** https://nguillet23.github.io/SeniorLacrosseStory/
@@ -11,7 +11,7 @@ The site is a single page with these sections:
 
 1. **Home**: project overview
 2. **Unity**: development environment (Unity and Magic Leap)
-3. **Hardware**: motion capture with Vive Trackers
+3. **Hardware**: the Magic Leap headset and controller
 4. **Integration**: full system architecture
 5. **Testing**: methodology, metrics, and user feedback
 6. **Results**: outcomes, lessons learned, and the team
