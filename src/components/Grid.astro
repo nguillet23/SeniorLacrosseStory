@@ -1,0 +1,39 @@
+---
+// Responsive grid for parallel items. Use as="dl" when the children are SpecCards.
+interface Props {
+  cols?: 2 | 3 | 4;
+  as?: 'div' | 'dl';
+}
+
+const { cols = 3, as: Tag = 'div' } = Astro.props;
+---
+
+<Tag class={`grid cols-${cols}`}>
+  <slot />
+</Tag>
+
+<style>
+  .grid {
+    display: grid;
+    gap: var(--space-5) var(--space-4);
+    margin: 0;
+  }
+
+  .cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 56rem) {
+    .cols-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cols-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cols-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

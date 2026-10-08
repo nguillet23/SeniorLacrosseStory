@@ -3,9 +3,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Section from '../components/Section.astro';
+import Subsection from '../components/Subsection.astro';
+import Split from '../components/Split.astro';
+import Grid from '../components/Grid.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import SpecCard from '../components/SpecCard.astro';
+import MetricCard from '../components/MetricCard.astro';
+import MediaBlock from '../components/MediaBlock.astro';
+import Testimonial from '../components/Testimonial.astro';
+import TeamMember from '../components/TeamMember.astro';
 import Trajectory from '../components/Trajectory.astro';
+
+const repoUrl = 'https://github.com/xrlacrosse-nova/NovaXRLacrosse';
 ---
 
+<!--
+  All copy below is placeholder text moved over from the original page.
+  Phase 4 replaces it with Markdown/MDX content collections.
+-->
 <BaseLayout
   title="XR Lacrosse Goalie Training | Villanova Senior Design"
   description="A Villanova senior design project that combines a Magic Leap headset, Unity and a Magic Leap controller to train lacrosse goalies in extended reality."
@@ -29,40 +44,38 @@ import Trajectory from '../components/Trajectory.astro';
       </div>
     </section>
 
-    <!-- Sample sections: confirm both themes render. Real content arrives in Phase 4. -->
     <Section id="unity" title="Development environment" lead="Building with Unity and Magic Leap">
-      <div class="split">
-        <div class="stack">
-          <h3>Unity engine and Magic Leap integration</h3>
-          <p class="placeholder">
-            [Your explanation of how you chose Unity for development, Magic Leap device selection,
-            initial prototyping approach, and key challenges overcome]
-          </p>
-        </div>
-        <div
-          class="media-placeholder"
-          role="img"
-          aria-label="Placeholder for development screenshots"
-        >
-          <span>Development screenshots</span>
-        </div>
-      </div>
-      <ul class="features">
-        <li>
-          <h3>Magic Leap device</h3>
-          <p class="placeholder">[Technical specs, advantages, challenges]</p>
-        </li>
-        <li>
-          <h3>Unity development</h3>
-          <p class="placeholder">
-            [Unity version, plugins, custom scripts, performance optimization]
-          </p>
-        </li>
-        <li>
-          <h3>Game engine features</h3>
-          <p class="placeholder">[Rendering pipeline, physics, tracking, UI systems]</p>
-        </li>
-      </ul>
+      <Split>
+        <h3>Unity engine and Magic Leap integration</h3>
+        <p class="placeholder">
+          [Your explanation of how you chose Unity for development, Magic Leap device selection,
+          initial prototyping approach, and key challenges overcome]
+        </p>
+        <MediaBlock
+          slot="media"
+          kind="placeholder"
+          label="Development screenshots"
+          hint="Carousel or grid"
+        />
+      </Split>
+      <Subsection title="What we built with">
+        <Grid cols={3}>
+          <FeatureCard title="Magic Leap device">
+            <p class="placeholder">[Technical specs, advantages, challenges]</p>
+          </FeatureCard>
+          <FeatureCard title="Unity development">
+            <p class="placeholder">
+              [Unity version, plugins, custom scripts, performance optimization]
+            </p>
+          </FeatureCard>
+          <FeatureCard title="Game engine features">
+            <p class="placeholder">[Rendering pipeline, physics, tracking, UI systems]</p>
+          </FeatureCard>
+        </Grid>
+      </Subsection>
+      <Subsection title="Early development demo">
+        <MediaBlock kind="placeholder" label="Demo video or screenshots" hint="16:9 or 4:3" />
+      </Subsection>
     </Section>
 
     <Section
@@ -71,27 +84,182 @@ import Trajectory from '../components/Trajectory.astro';
       title="Hardware integration"
       lead="The Magic Leap headset and controller"
     >
-      <dl class="specs">
-        <div>
-          <dt>Tracking accuracy</dt>
-          <dd>XX mm</dd>
-        </div>
-        <div>
-          <dt>Refresh rate</dt>
-          <dd>XX Hz</dd>
-        </div>
-        <div>
-          <dt>Latency</dt>
-          <dd>XX ms</dd>
-        </div>
-        <div>
-          <dt>Battery life</dt>
-          <dd>XX h</dd>
-        </div>
-      </dl>
-      <a class="button" href="#unity">
-        Back to Unity
-      </a>
+      <Split>
+        <h3>Headset and controller</h3>
+        <p class="placeholder">
+          [Explanation of the Magic Leap headset and controller, how the controller is used in
+          training, calibration process, tracking accuracy]
+        </p>
+        <h4>Controller inputs</h4>
+        <ul class="bullets placeholder">
+          <li>[Controller input 1]</li>
+          <li>[Controller input 2]</li>
+          <li>[Controller input 3]</li>
+        </ul>
+        <MediaBlock
+          slot="media"
+          kind="placeholder"
+          label="Hardware photos and diagrams"
+          hint="Headset and controller"
+        />
+      </Split>
+      <Subsection title="Technical specifications">
+        <Grid cols={4} as="dl">
+          <SpecCard label="Tracking accuracy" value="XX mm" />
+          <SpecCard label="Refresh rate" value="XX Hz" />
+          <SpecCard label="Latency" value="XX ms" />
+          <SpecCard label="Battery life" value="XX h" />
+        </Grid>
+      </Subsection>
+      <Subsection title="Hardware architecture">
+        <MediaBlock
+          kind="placeholder"
+          label="System architecture diagram"
+          hint="Block diagram showing all connections"
+        />
+      </Subsection>
+    </Section>
+
+    <Section id="integration" title="Full system integration" lead="Bringing it all together">
+      <Split>
+        <h3>End-to-end system architecture</h3>
+        <p class="placeholder">
+          [Detailed explanation of how the Magic Leap headset, controller and Unity communicate;
+          data flow; synchronization strategy; latency management; real-time processing pipeline]
+        </p>
+        <MediaBlock
+          slot="media"
+          kind="placeholder"
+          label="Complete system architecture"
+          hint="Data flow, protocols, timing diagram"
+        />
+      </Split>
+      <Subsection title="What the system does">
+        <Grid cols={4}>
+          <FeatureCard title="Real-time tracking">
+            <p class="placeholder">[How real-time motion tracking is achieved]</p>
+          </FeatureCard>
+          <FeatureCard title="Immersive visualization">
+            <p class="placeholder">[How the AR environment displays training scenarios]</p>
+          </FeatureCard>
+          <FeatureCard title="Performance metrics">
+            <p class="placeholder">[How goalie performance is captured and analyzed]</p>
+          </FeatureCard>
+          <FeatureCard title="Training scenarios">
+            <p class="placeholder">[Different scenarios implemented in the system]</p>
+          </FeatureCard>
+        </Grid>
+      </Subsection>
+      <Subsection title="Full system demo">
+        <MediaBlock
+          kind="placeholder"
+          label="Full system demonstration video"
+          hint="Complete system in action"
+        />
+      </Subsection>
+    </Section>
+
+    <Section
+      id="testing"
+      variant="turf"
+      title="Testing and results"
+      lead="Validation and performance analysis"
+    >
+      <Split>
+        <h3>Testing methodology</h3>
+        <p class="placeholder">
+          [Describe your testing methodology, user testing process, validation metrics, and how you
+          measured success]
+        </p>
+        <MediaBlock
+          slot="media"
+          kind="placeholder"
+          label="Results charts and graphs"
+          hint="Performance data visualization"
+        />
+      </Split>
+      <Subsection title="Key metrics">
+        <Grid cols={4}>
+          <MetricCard value="XX%" label="Placeholder metric">
+            <p class="placeholder">[What you measured]</p>
+          </MetricCard>
+          <MetricCard value="XX ms" label="Latency">
+            <p class="placeholder">[System response time]</p>
+          </MetricCard>
+          <MetricCard value="XX" label="Test subjects">
+            <p class="placeholder">[Number of participants]</p>
+          </MetricCard>
+          <MetricCard value="XX/10" label="User rating">
+            <p class="placeholder">[User satisfaction score]</p>
+          </MetricCard>
+        </Grid>
+      </Subsection>
+      <Subsection title="User feedback">
+        <Grid cols={3}>
+          <Testimonial author="Coach or athlete name">
+            <p class="placeholder">[Quote or feedback from test user 1]</p>
+          </Testimonial>
+          <Testimonial author="Coach or athlete name">
+            <p class="placeholder">[Quote or feedback from test user 2]</p>
+          </Testimonial>
+          <Testimonial author="Coach or athlete name">
+            <p class="placeholder">[Quote or feedback from test user 3]</p>
+          </Testimonial>
+        </Grid>
+      </Subsection>
+    </Section>
+
+    <Section id="finale" title="Project outcomes" lead="What we learned and what's next">
+      <MediaBlock
+        kind="placeholder"
+        label="Final product showcase"
+        hint="Professional product photography"
+      />
+      <Subsection title="Key achievements">
+        <Grid cols={2}>
+          <FeatureCard title="Placeholder achievement">
+            <p class="placeholder">[What you accomplished]</p>
+          </FeatureCard>
+          <FeatureCard title="Placeholder achievement">
+            <p class="placeholder">[What you accomplished]</p>
+          </FeatureCard>
+          <FeatureCard title="Placeholder achievement">
+            <p class="placeholder">[What you accomplished]</p>
+          </FeatureCard>
+          <FeatureCard title="Placeholder achievement">
+            <p class="placeholder">[What you accomplished]</p>
+          </FeatureCard>
+        </Grid>
+      </Subsection>
+      <Subsection title="Looking back and ahead">
+        <Grid cols={2}>
+          <FeatureCard title="Lessons learned">
+            <p class="placeholder">
+              [Technical lessons, design decisions, what worked, what didn't, and why]
+            </p>
+          </FeatureCard>
+          <FeatureCard title="Future work">
+            <p class="placeholder">
+              [Potential improvements, scalability, commercialization opportunities, research
+              directions]
+            </p>
+          </FeatureCard>
+        </Grid>
+      </Subsection>
+      <Subsection title="Project team">
+        <Grid cols={3}>
+          <TeamMember name="David Sadasivam" position="Hardware Lead" />
+          <TeamMember name="William Macleod" position="Animation and Gameplay Lead" />
+        </Grid>
+      </Subsection>
+      <Subsection title="Dig into the code">
+        <p>The full project, including the website source, is on GitHub.</p>
+        <p>
+          <a class="button" href={repoUrl}>
+            View the source on GitHub
+          </a>
+        </p>
+      </Subsection>
     </Section>
   </main>
   <Footer />
@@ -129,88 +297,22 @@ import Trajectory from '../components/Trajectory.astro';
     color: var(--fg-soft);
   }
 
-  .split {
-    display: grid;
-    gap: var(--space-5);
-    align-items: start;
-    margin-bottom: var(--space-6);
-  }
-
-  .stack {
-    display: grid;
-    gap: var(--space-3);
-  }
-
   h3 {
     font-size: var(--step-2);
   }
 
-  .media-placeholder {
-    display: grid;
-    place-items: center;
-    aspect-ratio: 16 / 9;
-    border: 2px dashed var(--net);
-    border-radius: var(--radius-sm);
-    color: var(--fg-soft);
-  }
-
-  .features {
-    display: grid;
-    gap: var(--space-5);
-  }
-
-  .features li {
-    display: grid;
-    gap: var(--space-2);
-    padding-top: var(--space-3);
-    border-top: 2px solid var(--fg);
-  }
-
-  .features h3 {
+  h4 {
     font-size: var(--step-1);
   }
 
-  .specs {
-    display: grid;
-    gap: var(--space-5) var(--space-4);
-    grid-template-columns: repeat(2, 1fr);
-    margin: 0 0 var(--space-6);
-  }
-
-  .specs dd {
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: var(--step-3);
-    font-weight: 800;
-    line-height: 0.9;
-    white-space: nowrap;
-  }
-
-  .specs dt {
-    margin-top: var(--space-2);
-    color: var(--fg-soft);
-  }
-
-  .specs div {
-    display: flex;
-    flex-direction: column-reverse;
+  .bullets {
+    padding-left: 1.25em;
+    list-style: disc;
   }
 
   @media (min-width: 56rem) {
     .hero-grid {
       grid-template-columns: 1.1fr 1fr;
-    }
-
-    .split {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .features {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .specs {
-      grid-template-columns: repeat(4, 1fr);
     }
   }
 </style>

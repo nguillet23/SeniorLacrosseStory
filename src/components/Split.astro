@@ -1,0 +1,31 @@
+---
+// Text beside media. The default slot is the text; slot="media" is the media.
+---
+
+<div class="split">
+  <div class="text">
+    <slot />
+  </div>
+  <div class="media">
+    <slot name="media" />
+  </div>
+</div>
+
+<style>
+  .split {
+    display: grid;
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  .text {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  @media (min-width: 56rem) {
+    .split {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

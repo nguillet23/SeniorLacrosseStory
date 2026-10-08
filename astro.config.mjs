@@ -5,8 +5,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://nguillet23.github.io',
-  base: '/SeniorLacrosseStory',
+  site: 'https://xrlacrosse-nova.github.io',
+  base: '/NovaXRLacrosse',
   output: 'static',
   trailingSlash: 'always',
   integrations: [mdx(), sitemap()],
