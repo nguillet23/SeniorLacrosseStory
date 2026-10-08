@@ -66,8 +66,8 @@ The rules are defined in `.github/rulesets/` and can be imported in the GitHub r
 
 Villanova University Senior Design, 2026.
 
-- David Sadasivam
-- William Macleod
+- David Sadasivam: Hardware Lead
+- William Macleod: Animation and Gameplay Lead
 
 ## License
 
