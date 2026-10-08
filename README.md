@@ -44,13 +44,13 @@ Until the migration lands, content lives directly in `index.html`.
 
 The site is moving to [Astro](https://astro.build) with TypeScript and Markdown/MDX content, a fresh visual design, and deployment to GitHub Pages with GitHub Actions. The plan is kept locally in `Plans/` (git-ignored). Once the migration lands, this README will be updated with the new setup and content-editing instructions.
 
-| | Now | After migration |
-|---|---|---|
-| Framework | None (static HTML) | Astro (static output) |
-| Language | JavaScript | TypeScript |
-| Content | Written in HTML | Markdown/MDX content collections |
-| Design | Original placeholder design | Redesign |
-| Hosting | Not deployed | GitHub Pages via GitHub Actions |
+|           | Now                         | After migration                  |
+| --------- | --------------------------- | -------------------------------- |
+| Framework | None (static HTML)          | Astro (static output)            |
+| Language  | JavaScript                  | TypeScript                       |
+| Content   | Written in HTML             | Markdown/MDX content collections |
+| Design    | Original placeholder design | Redesign                         |
+| Hosting   | Not deployed                | GitHub Pages via GitHub Actions  |
 
 ## Contributing
 
