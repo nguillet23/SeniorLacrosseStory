@@ -1,0 +1,29 @@
+{
+  "name": "Branch naming",
+  "target": "branch",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": {
+      "include": ["~ALL"],
+      "exclude": ["~DEFAULT_BRANCH"]
+    }
+  },
+  "rules": [
+    {
+      "type": "branch_name_pattern",
+      "parameters": {
+        "name": "feature/, fix/, content/, chore/, docs/ prefix, or astro-migration",
+        "negate": false,
+        "operator": "regex",
+        "pattern": "^((feature|fix|content|chore|docs)/[a-z0-9._-]+|astro-migration)$"
+      }
+    }
+  ],
+  "bypass_actors": [
+    {
+      "actor_id": 5,
+      "actor_type": "RepositoryRole",
+      "bypass_mode": "always"
+    }
+  ]
+}
