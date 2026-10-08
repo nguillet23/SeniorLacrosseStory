@@ -1,0 +1,41 @@
+# Local planning docs (not published)
+Plans/
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Caches and tooling
+.eslintcache
+.cache/
+*.tsbuildinfo
+coverage/
+.lighthouseci/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+
+# Claude Code local settings
+.claude/settings.local.json
