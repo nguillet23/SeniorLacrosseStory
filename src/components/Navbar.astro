@@ -1,0 +1,183 @@
+---
+const links = [
+  { href: '#hero', label: 'Home' },
+  { href: '#unity', label: 'Unity' },
+  { href: '#hardware', label: 'Hardware' },
+  { href: '#integration', label: 'Integration' },
+  { href: '#testing', label: 'Testing' },
+  { href: '#finale', label: 'Results' },
+];
+---
+
+<header class="navbar theme-chalk" data-navbar>
+  <div class="container bar">
+    <a class="brand" href="#hero">
+      XR Goalie
+    </a>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-menu"
+      data-menu-toggle
+    >
+      <span class="visually-hidden">Menu</span>
+      <span class="bars" aria-hidden="true"></span>
+    </button>
+    <nav aria-label="Main">
+      <ul id="site-menu" class="menu" data-menu>
+        {links.map((link) => (
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 94%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--nav-height);
+  }
+
+  .brand {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .menu {
+    display: flex;
+    gap: var(--space-4);
+  }
+
+  .menu a {
+    display: inline-block;
+    padding-block: var(--space-2);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: border-color var(--duration-fast);
+  }
+
+  .menu a:hover,
+  .menu a[aria-current='true'] {
+    border-bottom-color: var(--ball);
+  }
+
+  .menu-toggle {
+    display: none;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .bars,
+  .bars::before,
+  .bars::after {
+    display: block;
+    width: 1.5rem;
+    height: 2px;
+    margin-inline: auto;
+    background: currentColor;
+    transition: transform var(--duration-base) var(--ease);
+  }
+
+  .bars::before,
+  .bars::after {
+    content: '';
+    position: relative;
+  }
+
+  .bars::before {
+    top: -7px;
+  }
+
+  .bars::after {
+    top: 5px;
+  }
+
+  [aria-expanded='true'] .bars {
+    background: transparent;
+  }
+
+  [aria-expanded='true'] .bars::before {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  [aria-expanded='true'] .bars::after {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  @media (max-width: 52rem) {
+    nav {
+      display: contents;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    .menu {
+      position: absolute;
+      inset: var(--nav-height) 0 auto 0;
+      flex-direction: column;
+      gap: 0;
+      padding: var(--space-2) var(--gutter) var(--space-4);
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .menu:not(.open) {
+      display: none;
+    }
+
+    .menu a {
+      display: block;
+      padding-block: var(--space-3);
+    }
+  }
+</style>
+
+<script>
+  // Minimal toggle so the menu works at phone width; the full module is ported in Phase 5.
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+
+  function setOpen(open: boolean) {
+    toggle?.setAttribute('aria-expanded', String(open));
+    menu?.classList.toggle('open', open);
+  }
+
+  toggle?.addEventListener('click', () => {
+    setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+  });
+  menu?.addEventListener('click', (event) => {
+    if ((event.target as HTMLElement).closest('a')) setOpen(false);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+</script>

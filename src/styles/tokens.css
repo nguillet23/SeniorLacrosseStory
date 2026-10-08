@@ -1,0 +1,71 @@
+/* Design tokens: "Goalie's-eye view" direction. */
+:root {
+  /* Palette */
+  --chalk: #edf2ea;
+  --turf: #123b2f;
+  --ink: #0e1b2c;
+  --net: #6b7c8f; /* rules and graphics only; too light for body text */
+  --ball: #ff5a1f; /* the single accent: shot trajectory, CTAs, focus on turf */
+  --ink-soft: #3e4f63; /* secondary text on chalk */
+  --turf-soft: #b9ccc2; /* secondary text on turf */
+
+  /* Semantic colors; sections override these through .theme-chalk / .theme-turf */
+  --bg: var(--chalk);
+  --fg: var(--ink);
+  --fg-soft: var(--ink-soft);
+  --rule: color-mix(in srgb, var(--net) 45%, transparent);
+  --focus: var(--ink);
+
+  /* Type */
+  --font-display: 'Big Shoulders Display Variable', 'Arial Narrow', Impact, sans-serif;
+  --font-body: 'Atkinson Hyperlegible Next Variable', system-ui, sans-serif;
+
+  --step--1: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --step-0: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-1: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
+  --step-2: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+  --step-3: clamp(2.5rem, 1.8rem + 3vw, 4rem);
+  --step-4: clamp(3.25rem, 1.5rem + 7.5vw, 8rem);
+
+  --measure: 66ch;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+  --space-7: clamp(4rem, 3rem + 5vw, 8rem);
+
+  /* Layout */
+  --container: 72rem;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --nav-height: 4rem;
+
+  /* Shape and depth: flat by default, like field markings */
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-pill: 999px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+}
+
+.theme-chalk {
+  --bg: var(--chalk);
+  --fg: var(--ink);
+  --fg-soft: var(--ink-soft);
+  --rule: color-mix(in srgb, var(--net) 45%, transparent);
+  --focus: var(--ink);
+}
+
+.theme-turf {
+  --bg: var(--turf);
+  --fg: var(--chalk);
+  --fg-soft: var(--turf-soft);
+  --rule: color-mix(in srgb, var(--chalk) 28%, transparent);
+  --focus: var(--ball);
+}
