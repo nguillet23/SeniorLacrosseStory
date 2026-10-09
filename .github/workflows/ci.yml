@@ -52,7 +52,7 @@ jobs:
         with:
           name: dist
           path: dist
-      - run: pnpm dlx @lhci/cli@0.14.0 autorun
+      - run: pnpm dlx @lhci/cli@0.14.0 autorun --collect.url=http://127.0.0.1:4321/${{ github.event.repository.name }}/
 
   links:
     name: Link check
@@ -76,7 +76,7 @@ jobs:
         run: |
           pnpm preview --host 127.0.0.1 --port 4321 &
           for i in $(seq 1 30); do
-            curl -sf http://127.0.0.1:4321/NovaXRLacrosse/ > /dev/null && exit 0
+            curl -sf http://127.0.0.1:4321/${{ github.event.repository.name }}/ > /dev/null && exit 0
             sleep 1
           done
           echo "Preview server did not start" && exit 1
@@ -85,6 +85,6 @@ jobs:
           # The canonical and og:url tags point at the live site, which 404s until the first deploy
           args: >-
             --no-progress --include-fragments
-            --exclude '^https://xrlacrosse-nova\.github\.io/'
-            http://127.0.0.1:4321/NovaXRLacrosse/
+            --exclude '^https://${{ github.repository_owner }}\.github\.io/'
+            http://127.0.0.1:4321/${{ github.event.repository.name }}/
           fail: true
