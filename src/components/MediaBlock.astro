@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import { resolveImage } from '../lib/media';
 
 // One component for every kind of media. Text alternatives are required by the types:
 // images need `alt`, videos need `label`, embeds need `title`, placeholders need `label`.
@@ -10,8 +11,9 @@ interface Base {
 }
 
 type Props = Base &
+  // `src` is a path inside src/assets/images/, for example "unity/gameplay.png"
   (
-    | { kind: 'image'; src: ImageMetadata; alt: string }
+    | { kind: 'image'; src: ImageMetadata | string; alt: string }
     // `src` and `poster` are paths under public/, for example "videos/demo.mp4"
     | { kind: 'video'; src: string; label: string; poster?: string }
     | { kind: 'embed'; src: string; title: string }
@@ -27,7 +29,7 @@ const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^
   <div class="frame" style={`--ratio: ${ratio}`}>
     {props.kind === 'image' && (
       <Image
-        src={props.src}
+        src={typeof props.src === 'string' ? resolveImage(props.src) : props.src}
         alt={props.alt}
         widths={[480, 800, 1200]}
         sizes="(min-width: 72rem) 36rem, 100vw"
