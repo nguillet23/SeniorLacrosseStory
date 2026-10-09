@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xrlacrosse-nova.github.io/NovaXRLacrosse/sitemap-index.xml

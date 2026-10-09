@@ -1,0 +1,94 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Section from '../components/Section.astro';
+import Trajectory from '../components/Trajectory.astro';
+import { mdxComponents } from '../components/mdx';
+import { reportDrafts } from '../lib/drafts';
+
+// Section copy lives in src/content/sections/*.mdx; the order field decides the page order.
+const entries = (await getCollection('sections')).sort((a, b) => a.data.order - b.data.order);
+const sections = await Promise.all(
+  entries.map(async (entry) => ({ entry, Content: (await render(entry)).Content })),
+);
+
+if (import.meta.env.PROD) await reportDrafts();
+---
+
+<BaseLayout
+  title="XR Lacrosse Goalie Training | Villanova Senior Design"
+  description="A Villanova senior design project that combines a Magic Leap headset, Unity and a Magic Leap controller to train lacrosse goalies in extended reality."
+>
+  <Navbar />
+  <main id="main">
+    <section id="hero" class="hero theme-chalk" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <h1 id="hero-title">Extended Reality Lacrosse Goalie Training</h1>
+          <p class="hero-sub">Villanova University Senior Design Project</p>
+          <p>
+            Bridging the gap between traditional training and immersive technology, to build the
+            next generation of goalie preparation.
+          </p>
+          <a class="button" href={`#${entries[0].id}`}>
+            Explore the project
+          </a>
+        </div>
+        <Trajectory />
+      </div>
+    </section>
+
+    {sections.map(({ entry, Content }) => (
+      <Section
+        id={entry.id}
+        title={entry.data.title}
+        lead={entry.data.lead}
+        variant={entry.data.variant}
+      >
+        <Content components={mdxComponents} />
+      </Section>
+    ))}
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: var(--space-6) var(--space-7);
+    background: var(--bg);
+    color: var(--fg);
+  }
+
+  .hero-grid {
+    display: grid;
+    gap: var(--space-6);
+    align-items: center;
+  }
+
+  .hero-text {
+    display: grid;
+    gap: var(--space-4);
+    justify-items: start;
+  }
+
+  h1 {
+    font-size: var(--step-4);
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+
+  .hero-sub {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 700;
+    color: var(--fg-soft);
+  }
+
+  @media (min-width: 56rem) {
+    .hero-grid {
+      grid-template-columns: 1.1fr 1fr;
+    }
+  }
+</style>

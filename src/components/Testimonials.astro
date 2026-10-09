@@ -1,0 +1,18 @@
+---
+// Renders the "testimonials" collection (src/content/testimonials.json).
+import { getCollection } from 'astro:content';
+import Grid from './Grid.astro';
+import Testimonial from './Testimonial.astro';
+
+const testimonials = (await getCollection('testimonials')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<Grid cols={3}>
+  {testimonials.map(({ data }) => (
+    <Testimonial author={data.author} position={data.position}>
+      <p class:list={{ placeholder: data.status === 'draft' }}>{data.quote}</p>
+    </Testimonial>
+  ))}
+</Grid>

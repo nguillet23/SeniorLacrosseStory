@@ -1,0 +1,72 @@
+---
+// The hero's signature element: one shot, drawn once on load, ending in the goal.
+---
+
+<svg
+  class="trajectory"
+  viewBox="0 0 640 420"
+  role="img"
+  aria-label="A shot arcing into the top corner of a lacrosse goal"
+>
+  <defs>
+    <pattern id="net" width="14" height="14" patternUnits="userSpaceOnUse">
+      <path d="M14 0H0V14" fill="none" stroke="currentColor" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <g class="goal">
+    <rect x="400" y="130" width="200" height="200" fill="url(#net)" opacity="0.35" />
+    <path d="M400 330V130H600V330" fill="none" stroke="currentColor" stroke-width="5" />
+  </g>
+
+  <path class="shot" pathLength="1" d="M20 380C170 360 280 90 556 168" fill="none" />
+  <circle class="ball" cx="556" cy="168" r="11" />
+</svg>
+
+<style>
+  .trajectory {
+    width: 100%;
+    height: auto;
+    color: var(--fg-soft);
+    overflow: visible;
+  }
+
+  .shot {
+    stroke: var(--ball);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw 1.4s var(--ease) 0.3s forwards;
+  }
+
+  .ball {
+    fill: var(--ball);
+    opacity: 0;
+    animation: land 0.3s ease-out 1.55s forwards;
+  }
+
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes land {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .shot {
+      stroke-dashoffset: 0;
+      animation: none;
+    }
+
+    .ball {
+      opacity: 1;
+      animation: none;
+    }
+  }
+</style>

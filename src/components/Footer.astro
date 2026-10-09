@@ -1,0 +1,66 @@
+---
+const repoUrl = 'https://github.com/xrlacrosse-nova/NovaXRLacrosse';
+---
+
+<footer class="footer theme-turf">
+  <div class="container">
+    <div class="identity">
+      <p class="name">XR Lacrosse Goalie Training</p>
+      <p class="soft">A Villanova University Senior Design Project</p>
+    </div>
+    <ul class="links">
+      <li>
+        <a href="#hero">Back to top</a>
+      </li>
+      <li>
+        <a href={repoUrl}>Source on GitHub</a>
+      </li>
+    </ul>
+    <p class="soft legal">&copy; 2026 Villanova University. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding-block: var(--space-6) var(--space-5);
+    background: var(--bg);
+    color: var(--fg);
+  }
+
+  .footer .container {
+    display: grid;
+    gap: var(--space-4) var(--space-5);
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+
+  .name {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .soft {
+    color: var(--fg-soft);
+  }
+
+  .links {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .legal {
+    grid-column: 1 / -1;
+    max-width: none;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--rule);
+    font-size: var(--step--1);
+  }
+
+  @media (max-width: 40rem) {
+    .footer .container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,16 @@
+---
+// Renders the "metrics" collection (src/content/metrics.json) as a row of MetricCards.
+import { getCollection } from 'astro:content';
+import Grid from './Grid.astro';
+import MetricCard from './MetricCard.astro';
+
+const metrics = (await getCollection('metrics')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Grid cols={4}>
+  {metrics.map(({ data }) => (
+    <MetricCard value={data.value} label={data.label}>
+      <p class:list={{ placeholder: data.status === 'draft' }}>{data.note}</p>
+    </MetricCard>
+  ))}
+</Grid>

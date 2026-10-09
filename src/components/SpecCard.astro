@@ -1,0 +1,35 @@
+---
+// One spec as a jersey-style number over its label. Place inside <Grid as="dl">.
+interface Props {
+  label: string;
+  value: string;
+}
+
+const { label, value } = Astro.props;
+---
+
+<div class="spec">
+  <dt>{label}</dt>
+  <dd>{value}</dd>
+</div>
+
+<style>
+  .spec {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: var(--space-2);
+  }
+
+  dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-weight: 800;
+    line-height: 0.9;
+    white-space: nowrap;
+  }
+
+  dt {
+    color: var(--fg-soft);
+  }
+</style>

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "nicholas-guillet",
+    "name": "Nicholas Guillet",
+    "position": "Software Lead",
+    "order": 1,
+    "status": "final"
+  },
+  {
+    "id": "david-sadasivam",
+    "name": "David Sadasivam",
+    "position": "Hardware Lead",
+    "order": 2,
+    "status": "final"
+  },
+  {
+    "id": "william-macleod",
+    "name": "William Macleod",
+    "position": "Animation and Gameplay Lead",
+    "order": 3,
+    "status": "final"
+  }
+]
