@@ -8,6 +8,7 @@ const links = [
 ];
 ---
 
+<div class="nav-sentinel" data-nav-sentinel aria-hidden="true"></div>
 <header class="navbar theme-chalk" data-navbar>
   <div class="container bar">
     <a class="brand" href="#hero">
@@ -42,7 +43,23 @@ const links = [
     z-index: 50;
     background: color-mix(in srgb, var(--bg) 94%, transparent);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--rule);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--duration-base);
+  }
+
+  /* Set by scripts/nav-scroll.ts once the page has scrolled */
+  .navbar[data-scrolled] {
+    border-bottom-color: var(--rule);
+  }
+
+  /* Invisible marker at the top of the page that the scroll observer watches */
+  .nav-sentinel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 5rem;
+    pointer-events: none;
   }
 
   .bar {
@@ -158,25 +175,7 @@ const links = [
 </style>
 
 <script>
-  // Minimal toggle so the menu works at phone width; the full module is ported in Phase 5.
-  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
-  const menu = document.querySelector<HTMLElement>('[data-menu]');
-
-  function setOpen(open: boolean) {
-    toggle?.setAttribute('aria-expanded', String(open));
-    menu?.classList.toggle('open', open);
-  }
-
-  toggle?.addEventListener('click', () => {
-    setOpen(toggle.getAttribute('aria-expanded') !== 'true');
-  });
-  menu?.addEventListener('click', (event) => {
-    if ((event.target as HTMLElement).closest('a')) setOpen(false);
-  });
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
-      setOpen(false);
-      toggle.focus();
-    }
-  });
+  import '../scripts/menu';
+  import '../scripts/active-nav';
+  import '../scripts/nav-scroll';
 </script>

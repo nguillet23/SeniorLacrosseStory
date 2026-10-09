@@ -9,8 +9,11 @@ const { value, label } = Astro.props;
 ---
 
 <article class="metric">
-  <p class="value" data-metric-value>
-    {value}
+  <p class="value">
+    <span aria-hidden="true" data-metric-value>
+      {value}
+    </span>
+    <span class="visually-hidden">{value}</span>
   </p>
   <p class="label">{label}</p>
   <div class="note">
@@ -43,3 +46,7 @@ const { value, label } = Astro.props;
     color: var(--fg-soft);
   }
 </style>
+
+<script>
+  import '../scripts/counters';
+</script>
