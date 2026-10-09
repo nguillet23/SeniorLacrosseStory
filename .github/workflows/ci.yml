@@ -82,5 +82,9 @@ jobs:
           echo "Preview server did not start" && exit 1
       - uses: lycheeverse/lychee-action@v2
         with:
-          args: --no-progress --include-fragments http://127.0.0.1:4321/NovaXRLacrosse/
+          # The canonical and og:url tags point at the live site, which 404s until the first deploy
+          args: >-
+            --no-progress --include-fragments
+            --exclude '^https://xrlacrosse-nova\.github\.io/'
+            http://127.0.0.1:4321/NovaXRLacrosse/
           fail: true
