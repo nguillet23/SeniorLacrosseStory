@@ -34,10 +34,24 @@ h4 {
   text-wrap: balance;
 }
 
+h3 {
+  font-size: var(--step-2);
+}
+
+h4 {
+  font-size: var(--step-1);
+}
+
 p {
   margin: 0;
   max-width: var(--measure);
   text-wrap: pretty;
+}
+
+/* Bullet lists written in Markdown (MDX content) have no class */
+.section ul:not([class]) {
+  padding-left: 1.25em;
+  list-style: disc;
 }
 
 ul {
@@ -95,6 +109,7 @@ a {
 /* Shared button style: ink text on the ball-orange accent (contrast > 6:1) */
 .button {
   display: inline-block;
+  justify-self: start;
   padding: 0.85em 1.6em;
   border: 2px solid var(--ball);
   border-radius: var(--radius-sm);

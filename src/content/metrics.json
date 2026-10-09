@@ -1,0 +1,34 @@
+[
+  {
+    "id": "accuracy",
+    "value": "XX%",
+    "label": "Placeholder metric",
+    "note": "[What you measured]",
+    "order": 1,
+    "status": "draft"
+  },
+  {
+    "id": "latency",
+    "value": "XX ms",
+    "label": "Latency",
+    "note": "[System response time]",
+    "order": 2,
+    "status": "draft"
+  },
+  {
+    "id": "subjects",
+    "value": "XX",
+    "label": "Test subjects",
+    "note": "[Number of participants]",
+    "order": 3,
+    "status": "draft"
+  },
+  {
+    "id": "rating",
+    "value": "XX/10",
+    "label": "User rating",
+    "note": "[User satisfaction score]",
+    "order": 4,
+    "status": "draft"
+  }
+]

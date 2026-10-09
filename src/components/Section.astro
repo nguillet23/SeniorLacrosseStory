@@ -15,7 +15,9 @@ const { id, title, lead, variant = 'chalk' } = Astro.props;
       <h2 id={`${id}-title`}>{title}</h2>
       {lead && <p class="lead">{lead}</p>}
     </header>
-    <slot />
+    <div class="body">
+      <slot />
+    </div>
   </div>
 </section>
 
@@ -30,6 +32,11 @@ const { id, title, lead, variant = 'chalk' } = Astro.props;
     display: grid;
     gap: var(--space-3);
     margin-bottom: var(--space-6);
+  }
+
+  .body {
+    display: grid;
+    gap: var(--space-5);
   }
 
   h2 {

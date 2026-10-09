@@ -1,11 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
+
+const sections = (await getCollection('sections')).sort((a, b) => a.data.order - b.data.order);
 const links = [
   { href: '#hero', label: 'Home' },
-  { href: '#unity', label: 'Unity' },
-  { href: '#hardware', label: 'Hardware' },
-  { href: '#integration', label: 'Integration' },
-  { href: '#testing', label: 'Testing' },
-  { href: '#finale', label: 'Results' },
+  ...sections.map((section) => ({ href: `#${section.id}`, label: section.data.navLabel })),
 ];
 ---
 

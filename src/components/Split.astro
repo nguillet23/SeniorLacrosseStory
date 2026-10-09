@@ -1,14 +1,25 @@
 ---
-// Text beside media. The default slot is the text; slot="media" is the media.
+// Text beside media. The default slot is the text; `media` takes the MediaBlock props
+// (a prop, not a slot, so it works from MDX).
+import type { ComponentProps } from 'astro/types';
+import MediaBlock from './MediaBlock.astro';
+
+interface Props {
+  media?: ComponentProps<typeof MediaBlock>;
+}
+
+const { media } = Astro.props;
 ---
 
-<div class="split">
+<div class:list={['split', { 'has-media': media }]}>
   <div class="text">
     <slot />
   </div>
-  <div class="media">
-    <slot name="media" />
-  </div>
+  {media && (
+    <div class="media">
+      <MediaBlock {...media} />
+    </div>
+  )}
 </div>
 
 <style>
@@ -24,7 +35,7 @@
   }
 
   @media (min-width: 56rem) {
-    .split {
+    .has-media {
       grid-template-columns: 1fr 1fr;
     }
   }

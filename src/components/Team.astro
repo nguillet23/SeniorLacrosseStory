@@ -1,0 +1,14 @@
+---
+// Renders the "team" collection (src/content/team.json).
+import { getCollection } from 'astro:content';
+import Grid from './Grid.astro';
+import TeamMember from './TeamMember.astro';
+
+const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Grid cols={3}>
+  {team.map(({ data }) => (
+    <TeamMember name={data.name} position={data.position} photo={data.photo} />
+  ))}
+</Grid>
