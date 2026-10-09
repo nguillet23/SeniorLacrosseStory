@@ -2,15 +2,32 @@
 import '@fontsource-variable/big-shoulders-display';
 import '@fontsource-variable/atkinson-hyperlegible-next';
 import '../styles/global.css';
+import { getImage } from 'astro:assets';
+import { resolveImage } from '../lib/media';
 
 interface Props {
   title: string;
   description: string;
+  // Path inside src/assets/images/, for example "unity/midterm-goal.jpeg". Used for link previews.
+  image?: string;
+  imageAlt?: string;
+  noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, image, imageAlt, noindex = false } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+// Link previews need a JPG or PNG at an absolute URL, so the source image is converted here.
+const social = image
+  ? await getImage({
+      src: resolveImage(image),
+      width: 1200,
+      height: 630,
+      fit: 'cover',
+      format: 'jpg',
+    })
+  : undefined;
+const socialUrl = social ? new URL(social.src, Astro.site) : undefined;
 ---
 
 <!doctype html>
@@ -29,9 +46,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content={socialUrl ? 'summary_large_image' : 'summary'} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    {socialUrl && <meta property="og:image" content={socialUrl} />}
+    {socialUrl && imageAlt && <meta property="og:image:alt" content={imageAlt} />}
+    {socialUrl && <meta name="twitter:image" content={socialUrl} />}
+    {noindex && <meta name="robots" content="noindex" />}
   </head>
   <body>
     <a class="skip-link" href="#main">
