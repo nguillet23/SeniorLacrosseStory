@@ -41,4 +41,6 @@ pnpm is the package manager (Node >= 22.12).
 
 **Never run `git commit` (or push); the user commits manually.** After finishing any coding task, end your reply by stating the commit that should be made: a suggested commit message (imperative, short subject line) and the files to include.
 
+**Do not merge or deploy anything without the user's explicit approval.** That covers merging PRs, pushing to `main`, and triggering or re-running the Pages deploy workflow. In particular, no media (images, videos) goes live until the user says they are ready.
+
 `main` is protected by rulesets in `.github/rulesets/` (PR required, 1 approval, squash merge only, linear history, no force push). Branch names must match `feature|fix|content|chore|docs/<lowercase-slug>` or be exactly `astro-migration`; other names are rejected. Add required status checks after the first CI run.
