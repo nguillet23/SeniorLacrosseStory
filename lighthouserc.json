@@ -2,7 +2,7 @@
   "ci": {
     "collect": {
       "startServerCommand": "pnpm preview --host 127.0.0.1 --port 4321",
-      "startServerReadyPattern": "NovaXRLacrosse",
+      "startServerReadyPattern": "Local",
       "url": ["http://127.0.0.1:4321/NovaXRLacrosse/"],
       "numberOfRuns": 1
     },
